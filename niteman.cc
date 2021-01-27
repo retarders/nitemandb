@@ -1,7 +1,7 @@
 #include <iostream>
 
 int main() {
-    cout << "nitemen arise\n";
+    std::cout << "nitemen arise\n";
 
     return 0;
 }
