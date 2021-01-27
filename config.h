@@ -1,8 +1,7 @@
 #include <string>
-#include <toml.hpp>
+#include "toml.hpp"
 
 using namespace std;
-using namespace toml;
 
 class NitemanConfig {
 
@@ -18,12 +17,12 @@ class NitemanConfig {
 };
 
 static NitemanConfig loadConfig(string path) {
-    auto data = parse(path);
+    auto data = toml::parse(path);
 
-    auto service = find(data, "service");
+    auto service = toml::find(data, "service");
 
-    auto string host = find<string>(service, "host");
-    auto int port = find<int>(service, "port");
+    string host = toml::find<string>(service, "host");
+    int port = toml::find<int>(service, "port");
 
     NitemanConfig config;
 
