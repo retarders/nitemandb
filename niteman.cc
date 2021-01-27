@@ -5,7 +5,6 @@
 
 using namespace CLI;
 using namespace std;
-using namespace config;
 
 int main(int argc, char** argv) {
     App app{"Starts the NitemanDB database"};
