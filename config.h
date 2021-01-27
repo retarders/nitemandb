@@ -2,7 +2,7 @@
 
 using namespace std;
 
-class Config {
+class NitemanConfig {
 
     public:
         /* service section */
