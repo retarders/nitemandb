@@ -17,6 +17,8 @@ class NitemanConfig {
 };
 
 static NitemanConfig loadConfig(string path) {
+    NitemanConfig config;
+
     auto data = toml::parse(path);
 
     auto service = toml::find(data, "service");
@@ -24,7 +26,6 @@ static NitemanConfig loadConfig(string path) {
     string host = toml::find<string>(service, "host");
     int port = toml::find<int>(service, "port");
 
-    NitemanConfig config;
 
     config.host = host;
     config.port = port;
