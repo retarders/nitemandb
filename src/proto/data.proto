@@ -4,9 +4,5 @@ package data;
 
 message Database {
     required string name;
-
-    message Object {
-        required string key;
-        required string value;
-    }
+    map<string, string> objects;
 }
