@@ -23,7 +23,7 @@ class Database {
 
         void save() {
             /* create the buffer */
-            std::stringstream buffer;
+            stringstream buffer;
 
             /* pack all the data to the buffer */
             msgpack::pack(buffer, data);
@@ -46,7 +46,7 @@ class Database {
             if(!file.is_open()) return;
 
             /* read file */
-            std::stringstream buffer;
+            stringstream buffer;
 
             string line;
 
