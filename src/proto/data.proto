@@ -1,0 +1,12 @@
+syntax "proto2";
+
+package data;
+
+message Database {
+    string name;
+
+    message Object {
+        string key;
+        string value;
+    }
+}
