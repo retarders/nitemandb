@@ -4,5 +4,5 @@ package data;
 
 message Database {
     required string name = 1;
-    optional map<string, string> objects = 2;
+    map<string, string> objects = 2;
 }
