@@ -9,9 +9,11 @@ class Database {
         string path;
 
     public:
+        string name;
 
-        Database(string path_a) {
-            path = path_a;
+        Database(string dbname, string dbpath) {
+            path = dbpath;
+            name = dbname
         }
 
         int save() {
