@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    database = new Database(data_path);
+    database = new Database("default", data_path + "/default.nmdump");
 
     return 0;
 }
