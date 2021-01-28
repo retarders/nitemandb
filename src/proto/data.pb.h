@@ -89,18 +89,10 @@ public:
   void MergeFrom(const Database_ObjectsEntry_DoNotUse& other);
   static const Database_ObjectsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Database_ObjectsEntry_DoNotUse*>(&_Database_ObjectsEntry_DoNotUse_default_instance_); }
   static bool ValidateKey(std::string* s) {
-#ifndef NDEBUG
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-       s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "data.Database.ObjectsEntry.key");
-#endif
-    return true;
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "data.Database.ObjectsEntry.key");
  }
   static bool ValidateValue(std::string* s) {
-#ifndef NDEBUG
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-       s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "data.Database.ObjectsEntry.value");
-#endif
-    return true;
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "data.Database.ObjectsEntry.value");
  }
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
   ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
@@ -138,13 +130,6 @@ class Database PROTOBUF_FINAL :
       CopyFrom(from);
     }
     return *this;
-  }
-
-  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
-  }
-  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
   }
 
   static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
@@ -256,11 +241,7 @@ class Database PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
       mutable_objects();
 
-  // required string name = 1;
-  bool has_name() const;
-  private:
-  bool _internal_has_name() const;
-  public:
+  // string name = 1;
   void clear_name();
   const std::string& name() const;
   void set_name(const std::string& value);
@@ -292,8 +273,6 @@ class Database PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::MapField<
       Database_ObjectsEntry_DoNotUse,
       std::string, std::string,
@@ -301,6 +280,7 @@ class Database PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
       0 > objects_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_data_2eproto;
 };
 // ===================================================================
@@ -316,17 +296,9 @@ class Database PROTOBUF_FINAL :
 
 // Database
 
-// required string name = 1;
-inline bool Database::_internal_has_name() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  return value;
-}
-inline bool Database::has_name() const {
-  return _internal_has_name();
-}
+// string name = 1;
 inline void Database::clear_name() {
   name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  _has_bits_[0] &= ~0x00000001u;
 }
 inline const std::string& Database::name() const {
   // @@protoc_insertion_point(field_get:data.Database.name)
@@ -344,46 +316,42 @@ inline const std::string& Database::_internal_name() const {
   return name_.Get();
 }
 inline void Database::_internal_set_name(const std::string& value) {
-  _has_bits_[0] |= 0x00000001u;
+  
   name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
 }
 inline void Database::set_name(std::string&& value) {
-  _has_bits_[0] |= 0x00000001u;
+  
   name_.Set(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
   // @@protoc_insertion_point(field_set_rvalue:data.Database.name)
 }
 inline void Database::set_name(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  _has_bits_[0] |= 0x00000001u;
+  
   name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArena());
   // @@protoc_insertion_point(field_set_char:data.Database.name)
 }
 inline void Database::set_name(const char* value,
     size_t size) {
-  _has_bits_[0] |= 0x00000001u;
+  
   name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArena());
   // @@protoc_insertion_point(field_set_pointer:data.Database.name)
 }
 inline std::string* Database::_internal_mutable_name() {
-  _has_bits_[0] |= 0x00000001u;
+  
   return name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
 inline std::string* Database::release_name() {
   // @@protoc_insertion_point(field_release:data.Database.name)
-  if (!_internal_has_name()) {
-    return nullptr;
-  }
-  _has_bits_[0] &= ~0x00000001u;
-  return name_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
 inline void Database::set_allocated_name(std::string* name) {
   if (name != nullptr) {
-    _has_bits_[0] |= 0x00000001u;
+    
   } else {
-    _has_bits_[0] &= ~0x00000001u;
+    
   }
   name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
       GetArena());
@@ -392,7 +360,7 @@ inline void Database::set_allocated_name(std::string* name) {
 inline std::string* Database::unsafe_arena_release_name() {
   // @@protoc_insertion_point(field_unsafe_arena_release:data.Database.name)
   GOOGLE_DCHECK(GetArena() != nullptr);
-  _has_bits_[0] &= ~0x00000001u;
+  
   return name_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       GetArena());
 }
@@ -400,9 +368,9 @@ inline void Database::unsafe_arena_set_allocated_name(
     std::string* name) {
   GOOGLE_DCHECK(GetArena() != nullptr);
   if (name != nullptr) {
-    _has_bits_[0] |= 0x00000001u;
+    
   } else {
-    _has_bits_[0] &= ~0x00000001u;
+    
   }
   name_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       name, GetArena());

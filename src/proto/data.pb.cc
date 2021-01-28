@@ -67,19 +67,17 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_data_2eproto::offsets[] PROTOB
   PROTOBUF_FIELD_OFFSET(::data::Database_ObjectsEntry_DoNotUse, value_),
   0,
   1,
-  PROTOBUF_FIELD_OFFSET(::data::Database, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::data::Database, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::data::Database, name_),
   PROTOBUF_FIELD_OFFSET(::data::Database, objects_),
-  0,
-  ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 7, sizeof(::data::Database_ObjectsEntry_DoNotUse)},
-  { 9, 16, sizeof(::data::Database)},
+  { 9, -1, sizeof(::data::Database)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -89,9 +87,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_data_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\ndata.proto\022\004data\"v\n\010Database\022\014\n\004name\030\001"
-  " \002(\t\022,\n\007objects\030\002 \003(\0132\033.data.Database.Ob"
+  " \001(\t\022,\n\007objects\030\002 \003(\0132\033.data.Database.Ob"
   "jectsEntry\032.\n\014ObjectsEntry\022\013\n\003key\030\001 \001(\t\022"
-  "\r\n\005value\030\002 \001(\t:\0028\001"
+  "\r\n\005value\030\002 \001(\t:\0028\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_data_2eproto_deps[1] = {
 };
@@ -101,7 +99,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_dat
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_data_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_data_2eproto = {
-  false, false, descriptor_table_protodef_data_2eproto, "data.proto", 138,
+  false, false, descriptor_table_protodef_data_2eproto, "data.proto", 146,
   &descriptor_table_data_2eproto_once, descriptor_table_data_2eproto_sccs, descriptor_table_data_2eproto_deps, 2, 0,
   schemas, file_default_instances, TableStruct_data_2eproto::offsets,
   file_level_metadata_data_2eproto, 2, file_level_enum_descriptors_data_2eproto, file_level_service_descriptors_data_2eproto,
@@ -134,13 +132,6 @@ void Database::InitAsDefaultInstance() {
 }
 class Database::_Internal {
  public:
-  using HasBits = decltype(std::declval<Database>()._has_bits_);
-  static void set_has_name(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-  static bool MissingRequiredFields(const HasBits& has_bits) {
-    return ((has_bits[0] & 0x00000001) ^ 0x00000001) != 0;
-  }
 };
 
 Database::Database(::PROTOBUF_NAMESPACE_ID::Arena* arena)
@@ -151,12 +142,11 @@ Database::Database(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   // @@protoc_insertion_point(arena_constructor:data.Database)
 }
 Database::Database(const Database& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   objects_.MergeFrom(from.objects_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from._internal_has_name()) {
+  if (!from._internal_name().empty()) {
     name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_name(),
       GetArena());
   }
@@ -201,31 +191,24 @@ void Database::Clear() {
   (void) cached_has_bits;
 
   objects_.Clear();
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    name_.ClearNonDefaultToEmpty();
-  }
-  _has_bits_.Clear();
+  name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Database::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // required string name = 1;
+      // string name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "data.Database.name");
-          #endif  // !NDEBUG
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "data.Database.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -256,7 +239,6 @@ const char* Database::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
     }  // switch
   }  // while
 success:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -270,12 +252,11 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // required string name = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "data.Database.name");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_name(), target);
@@ -289,13 +270,13 @@ failure:
     typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
     struct Utf8Check {
       static void Check(ConstPtr p) {
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->first.data(), static_cast<int>(p->first.length()),
-          ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "data.Database.ObjectsEntry.key");
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
           p->second.data(), static_cast<int>(p->second.length()),
-          ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
           "data.Database.ObjectsEntry.value");
       }
     };
@@ -338,12 +319,6 @@ size_t Database::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:data.Database)
   size_t total_size = 0;
 
-  // required string name = 1;
-  if (_internal_has_name()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_name());
-  }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -355,6 +330,13 @@ size_t Database::ByteSizeLong() const {
       it = this->_internal_objects().begin();
       it != this->_internal_objects().end(); ++it) {
     total_size += Database_ObjectsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // string name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -389,7 +371,7 @@ void Database::MergeFrom(const Database& from) {
   (void) cached_has_bits;
 
   objects_.MergeFrom(from.objects_);
-  if (from._internal_has_name()) {
+  if (from.name().size() > 0) {
     _internal_set_name(from._internal_name());
   }
 }
@@ -409,14 +391,12 @@ void Database::CopyFrom(const Database& from) {
 }
 
 bool Database::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
 void Database::InternalSwap(Database* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   objects_.Swap(&other->objects_);
   name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }

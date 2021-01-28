@@ -1,5 +1,6 @@
 #include <string>
 #include <map>
+#include "proto/data.pb.h"
 
 using namespace std;
 
@@ -10,8 +11,11 @@ class Database {
 
     public:
 
+        data::Database db;
+
         Database(string path_a) {
             path = path_a;
+            db.set_name("default");
         }
 
         int save() {
@@ -22,10 +26,10 @@ class Database {
             return 0;
         }
 
-        void put(string key, string value) { }
+        void put(string key, string value);
 
-        string get(string key) { }
+        string get(string key);
 
-        map<string, string> all() { }
+        map<string, string> all();
 
 };
