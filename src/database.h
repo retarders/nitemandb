@@ -35,8 +35,6 @@ class Database {
             // file << buffer.rdbuf();
             auto const& str = buffer.str();
             file << str;
-            cout << str << endl;
-
             file.close();
         }
 
@@ -60,8 +58,6 @@ class Database {
             auto const& str = buffer.str();
             auto unpacked = msgpack::unpack(str.data(), str.size(), 0);
             auto obj = unpacked.get();
-
-            cout << obj << endl;
 
         }
 
