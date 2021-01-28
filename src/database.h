@@ -1,6 +1,9 @@
 #include <string>
 #include <map>
 #include <msgpack.hpp>
+#include <sstream>
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -19,7 +22,19 @@ class Database {
         }
 
         void save() {
+            /* create the buffer */
+            std::stringstream buffer;
 
+            /* pack all the data to the buffer */
+            msgpack::pack(buffer, data);
+
+            /* save the buffer to the file */
+            ofstream file;
+            file.open(path);
+
+            file << buffer.rdbuf();
+
+            file.close();
         }
 
         void load() {
