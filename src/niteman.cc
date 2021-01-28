@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
     config = loadConfig(config_path);
 
     if(mkdir(data_path.c_str(), 0777) == -1) {
-        perror("You must run niteman as root");
+        perror("error");
         return 1;
     }
 
