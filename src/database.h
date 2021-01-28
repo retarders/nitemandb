@@ -13,7 +13,7 @@ class Database {
 
         Database(string dbname, string dbpath) {
             path = dbpath;
-            name = dbname
+            name = dbname;
         }
 
         int save() {
