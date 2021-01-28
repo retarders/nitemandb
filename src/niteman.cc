@@ -31,6 +31,8 @@ int main(int argc, char** argv) {
     }
 
     database = new Database("default", data_path + "/default.nmdump");
+    database->put("foo", "bar");
+    database->save();
 
     return 0;
 }
