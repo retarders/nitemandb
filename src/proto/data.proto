@@ -3,6 +3,6 @@ syntax = "proto2";
 package data;
 
 message Database {
-    string name = 1;
-    map<string, string> objects = 2;
+    required string name = 1;
+    optional map<string, string> objects = 2;
 }
