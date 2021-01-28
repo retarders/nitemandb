@@ -2,7 +2,7 @@
 #include "CLI/Formatter.hpp"
 #include "CLI/Config.hpp"
 #include "config.h"
-#include "database.h"
+#include "database.cc"
 #include <string>
 #include <sys/stat.h>
 
