@@ -26,8 +26,10 @@ int main(int argc, char** argv) {
     config = loadConfig(config_path);
 
     if(mkdir(data_path.c_str(), 0777) == -1) {
-        perror("error");
-        return 1;
+        /*
+            perror("error");
+            return 1;
+        */
     }
 
     database = new Database("default", data_path + "/default.nmdump");
