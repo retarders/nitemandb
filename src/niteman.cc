@@ -3,6 +3,7 @@
 #include "CLI/Config.hpp"
 #include "config.h"
 #include <string>
+#include <sys/stat.h>
 
 using namespace CLI;
 using namespace std;
@@ -21,6 +22,11 @@ int main(int argc, char** argv) {
     CLI11_PARSE(app, argc, argv);
 
     config = loadConfig(config_path);
+
+    if(mkdir(data_path.c_str(), 0777) == -1) {
+        perror("You must run niteman as root");
+        return 1;
+    }
 
     return 0;
 }
