@@ -41,6 +41,27 @@ class Database {
         }
 
         void load() {
+            /* open file */
+            ifstream file;
+            file.open(path);
+
+            if(!file.is_open()) return;
+
+            /* read file */
+            std::stringstream buffer;
+
+            string line;
+
+            while(getline(file, line)) {
+                buffer << line;
+            }
+
+            /* unpack */
+            auto const& str = buffer.str();
+            auto unpacked = msgpack::unpack(str.data(), str.size(), 0);
+            auto obj = unpacked.get();
+
+            cout << obj << endl;
 
         }
 
