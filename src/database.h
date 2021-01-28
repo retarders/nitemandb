@@ -1,5 +1,6 @@
 #include <string>
 #include <map>
+#include <msgpack.hpp>
 
 using namespace std;
 
@@ -17,12 +18,12 @@ class Database {
             name = dbname;
         }
 
-        int save() {
-            return 0;
+        void save() {
+
         }
 
-        int load() {
-            return 0;
+        void load() {
+
         }
 
         void put(string key, string value) {
