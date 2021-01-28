@@ -2,6 +2,7 @@
 #include "CLI/Formatter.hpp"
 #include "CLI/Config.hpp"
 #include "config.h"
+#include "database.h"
 #include <string>
 #include <sys/stat.h>
 
@@ -9,6 +10,7 @@ using namespace CLI;
 using namespace std;
 
 NitemanConfig config;
+Database* database;
 
 int main(int argc, char** argv) {
     App app{"Starts the NitemanDB database"};
@@ -27,6 +29,8 @@ int main(int argc, char** argv) {
         perror("You must run niteman as root");
         return 1;
     }
+
+    database = new Database(data_path);
 
     return 0;
 }
