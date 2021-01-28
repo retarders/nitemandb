@@ -32,7 +32,10 @@ class Database {
             ofstream file;
             file.open(path);
 
-            file << buffer.rdbuf();
+            // file << buffer.rdbuf();
+            auto const& str = buffer.str();
+            file << str;
+            cout << str << endl;
 
             file.close();
         }
