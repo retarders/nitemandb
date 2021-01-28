@@ -1,6 +1,7 @@
 [requires]
 cli11/1.9.1
 toml11/3.6.0
+msgpack/3.3.0
 
 [generators]
 cmake
