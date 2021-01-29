@@ -2,6 +2,7 @@
 cli11/1.9.1
 toml11/3.6.0
 msgpack/3.3.0
+zeromq/4.3.4
 
 [generators]
 cmake

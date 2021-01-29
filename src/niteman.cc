@@ -3,6 +3,7 @@
 #include "CLI/Config.hpp"
 #include "config.h"
 #include "database.cc"
+#include "server.cc"
 #include <string>
 #include <sys/stat.h>
 
@@ -11,6 +12,7 @@ using namespace std;
 
 NitemanConfig config;
 Database* database;
+Server* server;
 
 int main(int argc, char** argv) {
     App app{"Starts the NitemanDB database"};
@@ -36,6 +38,9 @@ int main(int argc, char** argv) {
     database->load();
     // database->put("foo", "bar");
     // database->save();
+
+    server = new Server(&config);
+    server->start();
 
     return 0;
 }
