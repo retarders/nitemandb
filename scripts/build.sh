@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 # https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html
 build_type=RELEASE
